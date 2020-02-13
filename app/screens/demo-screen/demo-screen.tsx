@@ -81,6 +81,10 @@ export interface DemoScreenProps extends NavigationInjectedProps<{}> {}
 export const DemoScreen: React.FunctionComponent<DemoScreenProps> = props => {
   const goBack = React.useMemo(() => () => props.navigation.goBack(null), [props.navigation])
 
+  const HomeScreen = React.useMemo(() => () => props.navigation.navigate("home"), [
+    props.navigation,
+  ])
+
   const demoReactotron = React.useMemo(
     () => async () => {
       console.tron.log("Your Friendly tron log message")
@@ -142,6 +146,15 @@ export const DemoScreen: React.FunctionComponent<DemoScreenProps> = props => {
             textStyle={DEMO_TEXT}
             tx="demoScreen.reactotron"
             onPress={demoReactotron}
+          />
+          <Text style={HINT} tx={`demoScreen.${Platform.OS}ReactotronHint`} />
+        </View>
+        <View>
+          <Button
+            style={DEMO}
+            textStyle={DEMO_TEXT}
+            tx="demoScreen.reactotron"
+            onPress={HomeScreen}
           />
           <Text style={HINT} tx={`demoScreen.${Platform.OS}ReactotronHint`} />
         </View>
