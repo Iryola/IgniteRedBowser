@@ -17,6 +17,7 @@ import { Screen, Text, Wallpaper, Header, Button } from "../../components"
 //import { NavigationInjectedProps } from "react-navigation"
 import { color, spacing } from "../../theme"
 import { useStores } from "../../models/root-store"
+import reduce from "ramda/es/reduce"
 
 //const buttonImage = require("../../theme/images/character.jpg")
 const buttonStyle: ImageStyle = {
@@ -30,7 +31,7 @@ const buttonStyle: ImageStyle = {
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.palette.black,
-  paddingHorizontal: spacing[4],
+  paddingHorizontal: spacing[2],
 }
 const HEADER: TextStyle = {
   paddingTop: spacing[3],
@@ -83,55 +84,97 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = props => {
         <TouchableOpacity
           style={{
             flex: 1,
-            height: 150,
-            width: undefined,
-            margin: 3,
             justifyContent: "center",
-            //alignItems: "center",
+            alignItems: "center",
+            backgroundColor: "black",
+            borderWidth: 5,
+            borderColor: "red",
+            borderStyle: "solid",
+            borderRadius: 50,
+            height: 150,
+            //width: 300,
+            margin: 20,
           }}
         >
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              //alignItems: "center",
-              width: undefined,
-              height: undefined,
-            }}
+          <Text
+            style={{ color: "red", fontSize: 42, fontWeight: "bold", fontFamily: "IMFellDWPica" }}
           >
-            <Image
-              resizeMethod="scale" //trying something here...
-              style={{
-                flex: 1,
-                height: 150,
-                width: undefined,
-                resizeMode: "contain", //commented out because of imagebackground
-              }}
-              source={require("../../theme/images/character.jpg")}
-            />
-            <Text style={{ flex: 1, position: "absolute" }}>Character</Text>
-          </View>
+            Characters
+          </Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={{
             flex: 1,
-            height: 150,
-            width: undefined,
-            margin: 3,
             justifyContent: "center",
-            //alignItems: "center",
+            alignItems: "center",
+            backgroundColor: "black",
+            borderWidth: 5,
+            borderColor: "red",
+            borderStyle: "solid",
+            borderRadius: 50,
+            height: 150,
+            //width: 300,
+            margin: 20,
           }}
         >
-          <Image
+          <Text style={{ color: "red", fontSize: 42, fontWeight: "bold" }}>Skills</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "black",
+            borderWidth: 5,
+            borderColor: "red",
+            borderStyle: "solid",
+            borderRadius: 50,
+            height: 150,
+            //width: 300,
+            margin: 20,
+          }}
+        >
+          <Text style={{ color: "red", fontSize: 42, fontWeight: "bold" }}>Dungeons</Text>
+        </TouchableOpacity>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <TouchableOpacity
             style={{
               flex: 1,
-              height: undefined,
-              width: undefined,
-              resizeMode: "cover",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "black",
+              borderWidth: 5,
+              borderColor: "red",
+              borderStyle: "solid",
+              borderRadius: 50,
+              height: 150,
+              //width: 300,
+              margin: 10,
             }}
-            source={require("../../theme/images/character.jpg")}
-          />
-        </TouchableOpacity>
+          >
+            <Text style={{ color: "red", fontSize: 25, fontWeight: "bold" }}>Skills</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "black",
+              borderWidth: 5,
+              borderColor: "red",
+              borderStyle: "solid",
+              borderRadius: 50,
+              height: 150,
+              //width: 300,
+              margin: 10,
+            }}
+          >
+            <Text style={{ color: "red", fontSize: 25, fontWeight: "bold" }}>Dungeons</Text>
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity
           style={{
@@ -144,7 +187,7 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = props => {
         >
           <Image
             source={require("../../theme/images/character.jpg")}
-            resizeMode="cover"
+            resizeMode="center"
             style={{ height: 150 }}
           />
           <Text
@@ -159,6 +202,318 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = props => {
             Character
           </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 20,
+          }}
+        >
+          <Image
+            source={require("../../theme/images/raids.jpg")}
+            resizeMode="center"
+            style={{ height: 150 }}
+          />
+          <Text
+            style={{
+              flex: 1,
+              position: "absolute",
+              color: "red",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Character
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 20,
+          }}
+        >
+          <Image
+            source={require("../../theme/images/loading.jpg")}
+            resizeMode="center"
+            style={{ height: 150 }}
+          />
+          <Text
+            style={{
+              flex: 1,
+              position: "absolute",
+              color: "red",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Character
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 20,
+          }}
+        >
+          <Image
+            source={require("../../theme/images/login.jpg")}
+            resizeMode="center"
+            style={{ height: 150 }}
+          />
+          <Text
+            style={{
+              flex: 1,
+              position: "absolute",
+              color: "red",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Character
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 20,
+          }}
+        >
+          <Image
+            source={require("../../theme/images/skills.jpg")}
+            resizeMode="center"
+            style={{ height: 150 }}
+          />
+          <Text
+            style={{
+              flex: 1,
+              position: "absolute",
+              color: "red",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Character
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 20,
+          }}
+        >
+          <Image
+            source={require("../../theme/images/raids.jpg")}
+            resizeMode="center"
+            style={{ height: 150 }}
+          />
+          <Text
+            style={{
+              flex: 1,
+              position: "absolute",
+              color: "red",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Character
+          </Text>
+        </TouchableOpacity>
+
+        <View style={{ flex: 2, flexDirection: "row", marginVertical: 15 }}>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //margin: 20,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/character.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //marginVertical: 20,
+              //height: 100,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/skills.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            flex: 2,
+            flexDirection: "row",
+            marginVertical: 15,
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //margin: 20,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/items.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //marginVertical: 20,
+              //height: 100,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/raids.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ flex: 2, flexDirection: "row", marginVertical: 15 }}>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //margin: 20,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/loading.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              //marginVertical: 20,
+              //height: 100,
+            }}
+          >
+            <Image
+              source={require("../../theme/images/login.jpg")}
+              resizeMode="center"
+              style={{ height: 90 }}
+            />
+            <Text
+              style={{
+                flex: 1,
+                position: "absolute",
+                color: "red",
+                fontSize: 30,
+                fontWeight: "bold",
+              }}
+            >
+              Character
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <Text preset="header" tx="homeScreen.header" />
         <View>
