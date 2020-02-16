@@ -13,7 +13,7 @@ import {
 import { Screen, Text, Wallpaper, Header, Button } from "../../components"
 // import { useStores } from "../models/root-store"
 
-//import { NavigationScreenProps } from "react-navigation"
+import { NavigationInjectedProps } from "react-navigation"
 //import { NavigationInjectedProps } from "react-navigation"
 import { color, spacing } from "../../theme"
 import { useStores } from "../../models/root-store"
@@ -63,7 +63,7 @@ const HINT: TextStyle = {
   marginVertical: spacing[2],
 }
 
-export interface HomeScreenProps extends NavigationScreenProps<{}> {}
+export interface HomeScreenProps extends NavigationInjectedProps<{}> {}
 
 export const HomeScreen: React.FunctionComponent<HomeScreenProps> = props => {
   const goBack = React.useMemo(() => () => props.navigation.goBack(null), [props.navigation])
